@@ -5,7 +5,7 @@
     cmp-tabby = {
       enable = true;
       host = "https://tabby.sammiller.dev";
-      
+
     };
 
     cmp-buffer = { enable = true; };
