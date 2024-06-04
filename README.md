@@ -10,14 +10,14 @@ Because who doesn't like a declarative configuration of Neovim?
 To run the configuration, you can type the following:
 
 ```bash
-nix run github:s-mil/nixvim-config
+nix run github:s-mil/nix-vim
 ```
 
 ## How to include as package
 
 To include the configuration as a replacement for Neovim, you first need to add it as an input on your system
 ```
-inputs.nixvim.url = "github:s-mil/nixvim-config"
+inputs.nixvim.url = "github:s-mil/nix-vim"
 ```
 
 Then you can input this in your configuration.nix (be sure that you inherit inputs from your flake)
@@ -38,8 +38,7 @@ Descriptions of all the config files/plugins used in this configuration.
 | auto-pairs.nix | Pairs brackets and quotes automatically. |
 | autosave.nix | Saves changes to disk automatically. |
 | bufferline.nix | Tab-like interface for easy buffer navigation. |
-| cmp.nix | Completion source with several options, including copilot. |
-| default.nix | Default configuration file for nixvim. |
+| cmp.nix | Completion source with several options, including 
 | fidget.nix | Show LSP notifications in the bottom corner. |
 | git.nix | Gitsigns shows git decorations in Lua, including signs for added, removed, and changed lines. |
 | ionide.nix | IDE-like features for F# programming. |

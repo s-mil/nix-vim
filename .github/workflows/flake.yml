@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         cachixName:
-          - mikaelfangel
+          - s-mil
         nixPath:
           - nixpkgs=channel:nixos-unstable
           - nixpkgs=channel:nixpkgs-unstable
