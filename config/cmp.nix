@@ -83,7 +83,7 @@
                   Calendar = "",
                   Watch = "󰥔",
                   Package = "",
-                  Copilot = "",
+                  Tabby = "󰄛",
                   Codeium = "",
                   TabNine = "",
                 }
