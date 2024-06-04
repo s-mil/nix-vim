@@ -36,7 +36,7 @@
           }
           { name = "nvim_lua"; }
           { name = "path"; }
-          { name = "copilot"; }
+          { name = "tabby"; }
         ];
 
         formatting = {
