@@ -4,7 +4,6 @@
     luasnip.enable = true;
     cmp-tabby = {
       enable = true;
-      host = "https://tabby.sammiller.dev";
 
     };
 
