@@ -15,6 +15,7 @@
     ./utils/auto-pairs.nix
     ./utils/autosave.nix
     ./utils/blankline.nix
+    ./utils/icons.nix
     ./utils/telescope.nix
     ./utils/harpoon.nix
     ./utils/toggleterm.nix

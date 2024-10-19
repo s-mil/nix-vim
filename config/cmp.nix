@@ -2,11 +2,8 @@
 {
   plugins = {
     luasnip.enable = true;
-    cmp-tabby = {
-      enable = true;
-
-    };
-
+    
+    cmp-tabby = { enable = true; };
     cmp-buffer = { enable = true; };
 
     cmp-emoji = { enable = true; };
