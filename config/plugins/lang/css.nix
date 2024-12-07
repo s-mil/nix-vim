@@ -1,11 +1,7 @@
-{ pkgs, lib, ... }:
-{
+{ pkgs, lib, ... }: {
   plugins = {
     conform-nvim.settings = {
-      formatters_by_ft.css = [
-        "prettierd"
-        "prettier"
-      ];
+      formatters_by_ft.css = [ "prettierd" "prettier" ];
 
       formatters = {
         prettierd.command = "${pkgs.prettierd}/bin/prettierd";
@@ -24,10 +20,7 @@
 
       tailwindcss = {
         enable = true;
-        cmd = [
-          (lib.getExe pkgs.tailwindcss-language-server)
-          "--stdio"
-        ];
+        cmd = [ (lib.getExe pkgs.tailwindcss-language-server) "--stdio" ];
       };
     };
   };

@@ -13,21 +13,15 @@
       event = "TextYankPost";
       pattern = "*";
       callback = {
-        __raw = "\n        function()\n          vim.highlight.on_yank()\n        end\n      ";
+        __raw =
+          "\n        function()\n          vim.highlight.on_yank()\n        end\n      ";
       };
     }
     {
       group = "indentscope";
       event = [ "FileType" ];
-      pattern = [
-        "help"
-        "Startup"
-        "startup"
-        "neo-tree"
-        "Trouble"
-        "trouble"
-        "notify"
-      ];
+      pattern =
+        [ "help" "Startup" "startup" "neo-tree" "Trouble" "trouble" "notify" ];
       callback = {
         __raw = ''
           function()

@@ -166,7 +166,8 @@
       mode = "n";
       key = "J";
       action = "mzJ`z";
-      options.desc = "Allow cursor to stay in the same place after appending to current line ";
+      options.desc =
+        "Allow cursor to stay in the same place after appending to current line ";
     }
 
     # {
@@ -199,10 +200,7 @@
 
     # Clear search with ESC
     {
-      mode = [
-        "n"
-        "i"
-      ];
+      mode = [ "n" "i" ];
       key = "<esc>";
       action = "<cmd>noh<cr><esc>";
       options = {
@@ -221,10 +219,7 @@
 
     # Copy stuff to system clipboard with <leader> + y or just y to have it just in vim
     {
-      mode = [
-        "n"
-        "v"
-      ];
+      mode = [ "n" "v" ];
       key = "<leader>y";
       action = ''"+y'';
       options.desc = "Copy to system clipboard";
@@ -232,10 +227,7 @@
 
     # Delete to void register
     {
-      mode = [
-        "n"
-        "v"
-      ];
+      mode = [ "n" "v" ];
       key = "<leader>D";
       action = ''"_d'';
       options.desc = "Delete to void register";

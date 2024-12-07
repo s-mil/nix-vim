@@ -18,9 +18,7 @@
         "K" = "hover";
       };
     };
-    lsp-lines = {
-      enable = true;
-    };
+    lsp-lines = { enable = true; };
     rustaceanvim.enable = true;
   };
 }

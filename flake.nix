@@ -16,19 +16,9 @@
     };
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      nixvim,
-      flake-utils,
-      ...
-    }@inputs:
-    let
-      config = import ./config; # import the module directly
-    in
-    flake-utils.lib.eachDefaultSystem (
-      system:
+  outputs = { self, nixpkgs, nixvim, flake-utils, ... }@inputs:
+    let config = import ./config; # import the module directly
+    in flake-utils.lib.eachDefaultSystem (system:
       let
         nixvimLib = nixvim.lib.${system};
         pkgs = import nixpkgs {
@@ -45,15 +35,14 @@
           } // import ./lib { inherit pkgs; };
         };
         nvim = nixvim'.makeNixvimWithModule nixvimModule;
-      in
-      {
+      in {
         checks = {
           # Run `nix flake check` to verify that your config is not broken
-          default = nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;
+          default =
+            nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;
         };
 
         # Lets you run `nix run` to start nixvim
         packages.default = nvim;
-      }
-    );
+      });
 }

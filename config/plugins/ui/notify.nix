@@ -6,18 +6,14 @@
     timeout = 4000;
   };
 
-  keymaps = [
-    {
-      mode = "n";
-      key = "<leader>un";
-      action = ''
-        <cmd>lua require("notify").dismiss({ silent = true, pending = true })<cr>
-      '';
-      options = {
-        desc = "Dismiss All Notifications";
-      };
-    }
-  ];
+  keymaps = [{
+    mode = "n";
+    key = "<leader>un";
+    action = ''
+      <cmd>lua require("notify").dismiss({ silent = true, pending = true })<cr>
+    '';
+    options = { desc = "Dismiss All Notifications"; };
+  }];
 
   extraConfigLua = ''
     local notify = require("notify")

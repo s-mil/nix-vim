@@ -1,22 +1,13 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   plugins = {
     conform-nvim.settings = {
-      formatters_by_ft = {
-        json = [ "jq" ];
-      };
+      formatters_by_ft = { json = [ "jq" ]; };
 
-      formatters = {
-        jq = {
-          command = "${pkgs.jq}/bin/jq";
-        };
-      };
+      formatters = { jq = { command = "${pkgs.jq}/bin/jq"; }; };
     };
 
     lint = {
-      lintersByFt = {
-        json = [ "jsonlint" ];
-      };
+      lintersByFt = { json = [ "jsonlint" ]; };
 
       linters = {
         jsonlint = {
@@ -25,8 +16,6 @@
       };
     };
 
-    lsp.servers.jsonls = {
-      enable = true;
-    };
+    lsp.servers.jsonls = { enable = true; };
   };
 }
