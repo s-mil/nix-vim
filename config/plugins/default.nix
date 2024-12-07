@@ -25,7 +25,7 @@
     ./lang/cpp.nix
     ./lang/css.nix
     ./lang/docker.nix
-    ./loang/dotnet.nix
+    ./lang/dotnet.nix
     ./lang/html.nix
     ./lang/json.nix
     ./lang/lua.nix
