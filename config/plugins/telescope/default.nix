@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   plugins = {
     project-nvim.enableTelescope = true;
     telescope = {
@@ -8,11 +7,7 @@
         fzf-native.enable = true;
         undo.enable = true;
         ui-select = {
-          settings = {
-            specific_opts = {
-              codeactions = true;
-            };
-          };
+          settings = { specific_opts = { codeactions = true; }; };
         };
       };
 
@@ -92,10 +87,7 @@
           options.desc = "Recent";
         };
         "<c-p>" = {
-          mode = [
-            "n"
-            "i"
-          ];
+          mode = [ "n" "i" ];
           action = "registers";
           options.desc = "Select register to paste";
         };

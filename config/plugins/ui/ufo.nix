@@ -1,32 +1,23 @@
-{ helpers, ... }:
-{
-  autoCmd = [
-    {
-      event = [
-        "BufEnter"
-        "BufNew"
-      ];
-      desc = "disable statuscolumn for neo-tree and dashboard";
-      callback = helpers.mkRaw ''
-        function()
-          local ft_ignore = { "dashboard", "neo-tree" }
-          if vim.tbl_contains(ft_ignore, vim.bo.filetype) then
-            vim.cmd("setlocal foldcolumn=0")
-          end
+{ helpers, ... }: {
+  autoCmd = [{
+    event = [ "BufEnter" "BufNew" ];
+    desc = "disable statuscolumn for neo-tree and dashboard";
+    callback = helpers.mkRaw ''
+      function()
+        local ft_ignore = { "dashboard", "neo-tree" }
+        if vim.tbl_contains(ft_ignore, vim.bo.filetype) then
+          vim.cmd("setlocal foldcolumn=0")
         end
-      '';
-    }
-  ];
+      end
+    '';
+  }];
 
   plugins = {
     statuscol = {
       enable = true;
       settings = {
         relculright = true;
-        ft_ignore = [
-          "dashboard"
-          "neo-tree"
-        ];
+        ft_ignore = [ "dashboard" "neo-tree" ];
         segments = [
           {
             click = "v:lua.ScFa";
@@ -38,10 +29,8 @@
           }
           {
             click = "v:lua.ScLa";
-            text = [
-              (helpers.mkRaw "require('statuscol.builtin').lnumfunc")
-              " "
-            ];
+            text =
+              [ (helpers.mkRaw "require('statuscol.builtin').lnumfunc") " " ];
           }
         ];
       };
@@ -69,7 +58,8 @@
     foldlevel = 99;
     foldlevelstart = 99;
     foldenable = true;
-    fillchars = helpers.mkRaw "[[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]";
+    fillchars =
+      helpers.mkRaw "[[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]";
   };
 
   keymaps = [
@@ -88,7 +78,8 @@
     {
       mode = "n";
       key = "zK";
-      action = helpers.mkRaw "function() local winid = require('ufo').peekFoldedLinesUnderCursor() if not winid then vim.lsp.buf.hover() end end";
+      action = helpers.mkRaw
+        "function() local winid = require('ufo').peekFoldedLinesUnderCursor() if not winid then vim.lsp.buf.hover() end end";
       options.desc = "Peek Folded Lines";
     }
   ];

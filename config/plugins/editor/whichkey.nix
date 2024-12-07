@@ -9,19 +9,13 @@
       };
       win = {
         border = "rounded";
-        padding = [
-          1
-          1
-        ];
+        padding = [ 1 1 ];
       };
       spec = [
         # General Mappings
         {
           __unkeyed-1 = "<leader>c";
-          mode = [
-            "n"
-            "v"
-          ];
+          mode = [ "n" "v" ];
           group = "+code";
         }
         {
@@ -32,10 +26,7 @@
 
         {
           __unkeyed-1 = "<leader>g";
-          mode = [
-            "n"
-            "v"
-          ];
+          mode = [ "n" "v" ];
           group = "+git";
         }
 

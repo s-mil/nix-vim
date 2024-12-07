@@ -1,5 +1,4 @@
-{ lib, helpers, ... }:
-{
+{ lib, helpers, ... }: {
   plugins = {
     # cmp-nvim-lsp.enable = true;
     # cmp-emoji.enable = true;
@@ -14,7 +13,7 @@
       cmdline = {
         "/" = {
           mapping.__raw = "cmp.mapping.preset.cmdline()";
-          sources = [ { name = "buffer"; } ];
+          sources = [{ name = "buffer"; }];
         };
         ":" = {
           mapping.__raw = "cmp.mapping.preset.cmdline()";
@@ -22,20 +21,15 @@
             { name = "path"; }
             {
               name = "cmdline";
-              option.ignore_cmds = [
-                "Man"
-                "!"
-              ];
+              option.ignore_cmds = [ "Man" "!" ];
             }
           ];
         };
       };
 
       filetype = {
-        sql.sources = [
-          { name = "buffer"; }
-          { name = "vim-dadbod-completion"; }
-        ];
+        sql.sources =
+          [ { name = "buffer"; } { name = "vim-dadbod-completion"; } ];
       };
 
       settings = {
@@ -99,7 +93,9 @@
           }
 
           # Disable this if running tests with nix flake check
-          (lib.mkIf helpers.enableExceptInTests { name = "nixpkgs_maintainers"; })
+          (lib.mkIf helpers.enableExceptInTests {
+            name = "nixpkgs_maintainers";
+          })
         ];
 
         window = {

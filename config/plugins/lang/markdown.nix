@@ -1,8 +1,5 @@
-{ pkgs, helpers, ... }:
-{
-  extraPackages = with pkgs; [
-    marksman
-  ];
+{ pkgs, helpers, ... }: {
+  extraPackages = with pkgs; [ marksman ];
 
   plugins = {
     clipboard-image = {
@@ -18,19 +15,14 @@
       };
     };
 
-    markdown-preview = {
-      enable = true;
-    };
+    markdown-preview = { enable = true; };
 
     lsp.servers = {
       marksman.enable = true;
 
       ltex = {
         enable = true;
-        filetypes = [
-          "markdown"
-          "text"
-        ];
+        filetypes = [ "markdown" "text" ];
 
         settings.completionEnabled = true;
 
@@ -43,19 +35,18 @@
 
     lint = {
       lintersByFt.md = [ "markdownlint-cli2" ];
-      linters.markdownlint-cli2.cmd = "${pkgs.markdownlint-cli2}/bin/markdownlint-cli2";
+      linters.markdownlint-cli2.cmd =
+        "${pkgs.markdownlint-cli2}/bin/markdownlint-cli2";
     };
   };
 
-  keymaps = [
-    {
-      mode = "n";
-      key = "<leader>m";
-      action = "<cmd>MarkdownPreviewToggle<cr>";
-      options = {
-        silent = true;
-        desc = "Toggle markdown preview";
-      };
-    }
-  ];
+  keymaps = [{
+    mode = "n";
+    key = "<leader>m";
+    action = "<cmd>MarkdownPreviewToggle<cr>";
+    options = {
+      silent = true;
+      desc = "Toggle markdown preview";
+    };
+  }];
 }

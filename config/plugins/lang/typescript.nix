@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
 
   plugins = {
     conform-nvim.settings = {
@@ -11,9 +10,7 @@
         svelte = [ "eslint_d" ];
       };
 
-      formatters.eslint_d = {
-        command = "${pkgs.eslint_d}/bin/eslint_d";
-      };
+      formatters.eslint_d = { command = "${pkgs.eslint_d}/bin/eslint_d"; };
     };
 
     lsp.servers = {
@@ -62,17 +59,13 @@
           vtsls = {
             autoUseWorkspaceTsdk = true;
             experimental = {
-              completion = {
-                enableServerSideFuzzyMatch = true;
-              };
+              completion = { enableServerSideFuzzyMatch = true; };
             };
           };
 
           typescript = {
             updateImportsOnFileMove.enabled = "always";
-            suggest = {
-              completeFunctionCalls = true;
-            };
+            suggest = { completeFunctionCalls = true; };
 
             inlayHints = {
               enumMemberValues.enabled = true;
