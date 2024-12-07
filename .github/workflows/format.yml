@@ -22,7 +22,7 @@ jobs:
     - name: Install nix-fmt
       run: nix profile install nixpkgs#nixfmt-rfc-style
     - name: Run nixfmt
-      run: nixfmt-rfc-style
+      run: nixfmt
     - name: Get git status
       run: git status
     - name: Commit changes
