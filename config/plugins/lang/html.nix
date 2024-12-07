@@ -1,7 +1,11 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, ... }:
+{
   plugins = {
     conform-nvim.settings = {
-      formatters_by_ft.html = [ "prettierd" "prettier" ];
+      formatters_by_ft.html = [
+        "prettierd"
+        "prettier"
+      ];
 
       formatters = {
         prettierd.command = "${pkgs.prettierd}/bin/prettierd";
@@ -20,13 +24,18 @@
         };
       };
 
-      enabledServers = [{
-        name = "emmet_language_server";
-        extraOptions = {
-          cmd = [ (lib.getExe pkgs.emmet-language-server) "--stdio" ];
-          filetypes = [ "html" ];
-        };
-      }];
+      enabledServers = [
+        {
+          name = "emmet_language_server";
+          extraOptions = {
+            cmd = [
+              (lib.getExe pkgs.emmet-language-server)
+              "--stdio"
+            ];
+            filetypes = [ "html" ];
+          };
+        }
+      ];
     };
   };
 }

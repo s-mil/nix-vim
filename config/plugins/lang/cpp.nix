@@ -1,10 +1,15 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   plugins = {
     conform-nvim.settings = {
-      formatters_by_ft = { cpp = [ "clang-format" ]; };
+      formatters_by_ft = {
+        cpp = [ "clang-format" ];
+      };
 
       formatters = {
-        clang-format = { command = "${pkgs.clang-tools}/bin/clang-format"; };
+        clang-format = {
+          command = "${pkgs.clang-tools}/bin/clang-format";
+        };
       };
     };
 
@@ -43,7 +48,9 @@
     clangd-extensions = {
       enable = true;
       extraOptions = {
-        inlay_hints = { inline = false; };
+        inlay_hints = {
+          inline = false;
+        };
         codelens.enable = true;
       };
       ast = {
@@ -70,17 +77,19 @@
     dap = {
       adapters.executables.lldb.command = "${pkgs.lldb}/bin/lldb-vscode";
 
-      configurations.cpp = [{
-        name = "C++";
-        type = "lldb";
-        request = "launch";
-        cwd = "\${workspaceFolder}";
-        program.__raw = ''
-          function()
-            return vim.fn.input('Executable path: ', vim.fn.getcwd() .. '/', 'file')
-          end
-        '';
-      }];
+      configurations.cpp = [
+        {
+          name = "C++";
+          type = "lldb";
+          request = "launch";
+          cwd = "\${workspaceFolder}";
+          program.__raw = ''
+            function()
+              return vim.fn.input('Executable path: ', vim.fn.getcwd() .. '/', 'file')
+            end
+          '';
+        }
+      ];
     };
   };
 }

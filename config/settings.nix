@@ -7,18 +7,16 @@
       vim.fn.sign_define("diagnosticsigninfo", { text = " ", texthl = "diagnosticinfo", linehl = "", numhl = "" })
     '';
 
-    # feature that enhances the way Neovim loads and executes Lua modules, 
+    # feature that enhances the way Neovim loads and executes Lua modules,
     # offering improved performance and flexibility.
     luaLoader.enable = true;
 
     clipboard.providers.wl-copy.enable = true;
 
     opts = {
-      virtualedit =
-        "block"; # Allow cursor to move where there is no text in visual block mode
+      virtualedit = "block"; # Allow cursor to move where there is no text in visual block mode
       cursorline = true; # Highlight the line where the cursor is located
-      cmdheight =
-        2; # more space in the neovim command line for displaying messages
+      cmdheight = 2; # more space in the neovim command line for displaying messages
       showmode = false; # Dont show the editor mode in status line
 
       # Enable relative line numbers

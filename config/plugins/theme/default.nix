@@ -26,7 +26,9 @@
           which_key = true;
           native_lsp = {
             enabled = true;
-            inlay_hints = { background = true; };
+            inlay_hints = {
+              background = true;
+            };
             virtual_text = {
               errors = [ "italic" ];
               hints = [ "italic" ];
