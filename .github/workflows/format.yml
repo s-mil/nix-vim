@@ -20,7 +20,7 @@ jobs:
     - name: Install nix
       uses: cachix/install-nix-action@v27
     - name: Install nix-fmt
-      run: nix-env -iA nixfmt-rfc-style
+      run: nix profile install nixpkgs#nixfmt-rfc-style
     - name: Run nixfmt
       run: nixfmt-rfc-style
     - name: Get git status
