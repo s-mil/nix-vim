@@ -16,7 +16,7 @@ jobs:
           token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
 
       - name: Install Nix
-        uses: cachix/install-nix-action@v20
+        uses: cachix/install-nix-action@v27
         with:
           nix_path: nixpkgs=channel:nixos-unstable
           github_access_token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}

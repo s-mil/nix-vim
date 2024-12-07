@@ -18,9 +18,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
     - name: Install nix
-      uses: cachix/install-nix-action@v26
+      uses: cachix/install-nix-action@v27
+    - name: Install nix-fmt
+      run: nix-env -iA nixpkgs.nixfmt-rfc-style
     - name: Run nixfmt
-      run: nix fmt
+      run: nixfmt-rfc-style
     - name: Get git status
       run: git status
     - name: Commit changes
