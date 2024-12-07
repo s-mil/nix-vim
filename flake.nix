@@ -4,6 +4,16 @@
   inputs = {
     nixvim.url = "github:nix-community/nixvim";
     flake-utils.url = "github:numtide/flake-utils";
+    # color tools
+    minty = {
+      url = "github:NvChad/minty";
+      flake = false;
+    };
+
+    volt = {
+      url = "github:NvChad/volt";
+      flake = false;
+    };
   };
 
   outputs = { self, nixpkgs, nixvim, flake-utils, ... }@inputs:
@@ -17,8 +27,7 @@
           inherit pkgs;
           module = config;
         };
-      in
-      {
+      in {
         formatter = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
 
         checks = {
@@ -32,7 +41,5 @@
           # Lets you run `nix run .` to start nixvim
           default = nvim;
         };
-
-        devShells.default = import ./shell.nix { inherit pkgs; };
       });
 }
