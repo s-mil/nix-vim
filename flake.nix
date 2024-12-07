@@ -21,25 +21,28 @@
     in flake-utils.lib.eachDefaultSystem (system:
       let
         nixvimLib = nixvim.lib.${system};
-        pkgs = import nixpkgs { inherit system; };
+        pkgs = import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
         nixvim' = nixvim.legacyPackages.${system};
-        nvim = nixvim'.makeNixvimWithModule {
+        nixvimModule = {
           inherit pkgs;
-          module = config;
+          module = import ./config; # import the module directly
+          # You can use `extraSpecialArgs` to pass additional arguments to your module files
+          extraSpecialArgs = {
+            inherit inputs;
+          } // import ./lib { inherit pkgs; };
         };
+        nvim = nixvim'.makeNixvimWithModule nixvimModule;
       in {
-        formatter = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
-
         checks = {
-          default = nixvimLib.check.mkTestDerivationFromNvim {
-            inherit nvim;
-            name = "My nixvim configuration";
-          };
+          # Run `nix flake check` to verify that your config is not broken
+          default =
+            nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;
         };
 
-        packages = {
-          # Lets you run `nix run .` to start nixvim
-          default = nvim;
-        };
+        # Lets you run `nix run` to start nixvim
+        packages.default = nvim;
       });
 }
