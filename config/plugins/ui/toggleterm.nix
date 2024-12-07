@@ -22,8 +22,7 @@
       shell = "zsh";
       direction = "horizontal"; # 'vertical' | 'horizontal' | 'tab' | 'float'
       float_opts = {
-        border =
-          "single"; # 'single' | 'double' | 'shadow' | 'curved' | ... other options supported by win open
+        border = "single"; # 'single' | 'double' | 'shadow' | 'curved' | ... other options supported by win open
         width = 80;
         height = 20;
         winblend = 0;

@@ -3,8 +3,7 @@
     lspsaga = {
       enable = true;
       beacon.enable = true;
-      ui.border =
-        "rounded"; # One of none, single, double, rounded, solid, shadow
+      ui.border = "rounded"; # One of none, single, double, rounded, solid, shadow
       hover = {
         openCmd = "!firfox";
         openLink = "gx";
@@ -20,7 +19,10 @@
         onlyInCursor = false;
         keys = {
           exec = "<CR>";
-          quit = [ "<Esc>" "q" ];
+          quit = [
+            "<Esc>"
+            "q"
+          ];
         };
       };
 
@@ -31,7 +33,10 @@
 
       rename.keys = {
         exec = "<CR>";
-        quit = [ "<C-k>" "<Esc>" ];
+        quit = [
+          "<C-k>"
+          "<Esc>"
+        ];
         select = "x";
       };
 
@@ -52,11 +57,13 @@
       };
     };
 
-    which-key.settings.spec = [{
-      __unkeyed-1 = "gp";
-      mode = "n";
-      group = "+peek";
-    }];
+    which-key.settings.spec = [
+      {
+        __unkeyed-1 = "gp";
+        mode = "n";
+        group = "+peek";
+      }
+    ];
   };
 
   keymaps = [

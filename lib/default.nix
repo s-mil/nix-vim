@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   icons = import ./icons.nix;
 
   # To add packages from from inputs

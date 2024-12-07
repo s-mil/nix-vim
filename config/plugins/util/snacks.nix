@@ -1,20 +1,27 @@
-{ config, lib, pkgs, ... }: {
-  extraConfigLuaPre = lib.mkOrder 1 (lib.optionalString
-    (config.plugins.snacks.enable
-      && config.plugins.snacks.settings.profiler.enabled) # Lua
-    ''
-      if vim.env.PROF then
-        local snacks = "${pkgs.vimPlugins.snacks-nvim}"
-        vim.opt.rtp:append(snacks)
-        require("snacks.profiler").startup({
-          startup = {
-            -- event = "VimEnter", -- stop profiler on this event. Defaults to `VimEnter`
-            event = "UIEnter",
-            -- event = "VeryLazy",
-          },
-        })
-      end
-    '');
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  extraConfigLuaPre = lib.mkOrder 1 (
+    lib.optionalString
+      (config.plugins.snacks.enable && config.plugins.snacks.settings.profiler.enabled) # Lua
+      ''
+        if vim.env.PROF then
+          local snacks = "${pkgs.vimPlugins.snacks-nvim}"
+          vim.opt.rtp:append(snacks)
+          require("snacks.profiler").startup({
+            startup = {
+              -- event = "VimEnter", -- stop profiler on this event. Defaults to `VimEnter`
+              event = "UIEnter",
+              -- event = "VeryLazy",
+            },
+          })
+        end
+      ''
+  );
 
   plugins = {
     snacks = {
@@ -26,19 +33,9 @@
           size = 1024 * 1024; # 1MB
           setup.__raw = ''
             function(ctx)
-              ${
-                lib.optionalString config.plugins.indent-blankline.enable
-                ''require("ibl").setup_buffer(0, { enabled = false })''
-              }
-              ${
-                lib.optionalString
-                (lib.hasAttr "indentscope" config.plugins.mini.modules)
-                "vim.b.miniindentscope_disable = true"
-              }
-              ${
-                lib.optionalString config.plugins.illuminate.enable
-                ''require("illuminate").pause_buf()''
-              }
+              ${lib.optionalString config.plugins.indent-blankline.enable ''require("ibl").setup_buffer(0, { enabled = false })''}
+              ${lib.optionalString (lib.hasAttr "indentscope" config.plugins.mini.modules) "vim.b.miniindentscope_disable = true"}
+              ${lib.optionalString config.plugins.illuminate.enable ''require("illuminate").pause_buf()''}
 
               -- Disable line numbers and relative line numbers
               vim.cmd("setlocal nonumber norelativenumber")
@@ -81,13 +78,17 @@
       mode = "n";
       key = "<leader>go";
       action = "<cmd>lua Snacks.gitbrowse()<CR>";
-      options = { desc = "Open file in browser"; };
+      options = {
+        desc = "Open file in browser";
+      };
     }
     {
       mode = "n";
       key = "<leader>gg";
       action = "<cmd>lua Snacks.lazygit()<CR>";
-      options = { desc = "Open lazygit"; };
+      options = {
+        desc = "Open lazygit";
+      };
     }
   ];
 }
